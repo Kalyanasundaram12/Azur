@@ -18,8 +18,11 @@ export class MainPageComponent implements OnInit {
     const navMenu = document.getElementById("nav-menu");
     const navItem = document.querySelectorAll(".nav__item");
     const header = document.getElementById("header");
-    const sr: ScrollRevealObject = ScrollReveal();
 
+    // Initialize ScrollReveal
+    const sr: ScrollRevealObject = ScrollReveal();
+    
+    // Define your ScrollReveal animations
     sr.reveal('.hero__img', { origin: 'top' });
 
     if (navToggle) {
@@ -62,21 +65,22 @@ export class MainPageComponent implements OnInit {
       console.warn("Element with id 'header' not found.");
     }
 
-    sr.reveal(".hero_content, .about_content");
-    sr.reveal(".hero__img", { origin: "top" });
+    // Define your ScrollReveal animations
+    sr.reveal('.hero__content, .about__content');
+    sr.reveal('.hero__img', { origin: 'top' });
 
     sr.reveal(
-      ".hero_info-wrapper, .skillstitle, .skillscontent, .qualificationname, .qualificationitem, .servicecard, .projectcontent, .testimonialwrapper, .footer_content",
+      '.hero__info-wrapper, .skills__title, .skills__content, .qualification__name, .qualification__item, .service__card, .project__content, .testimonial__wrapper, .footer__content',
       {
         delay: 500,
         interval: 100,
       }
     );
 
-    sr.reveal(".qualification_footer-text, .contact_content", {
-      origin: "left",
+    sr.reveal('.qualification__footer-text, .contact__content', {
+      origin: 'left',
     });
 
-    sr.reveal(".qualification_footer .btn, .contact_btn", { origin: "right" });
+    sr.reveal('.qualification__footer .btn, .contact__btn', { origin: 'right' });
   }
 }
