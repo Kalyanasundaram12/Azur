@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as ScrollReveal from 'scrollreveal';
+import Swiper from 'swiper';
 
 interface ScrollRevealObject {
   reveal: (selector: string, options?: any) => void;
@@ -14,29 +15,29 @@ export class MainPageComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    const navToggle = document.getElementById("nav-toggle");
-    const navMenu = document.getElementById("nav-menu");
-    const navItem = document.querySelectorAll(".nav__item");
-    const header = document.getElementById("header");
+    const navToggle = document.getElementById('nav-toggle');
+    const navMenu = document.getElementById('nav-menu');
+    const navItem = document.querySelectorAll('.nav__item');
+    const header = document.getElementById('header');
 
     // Initialize ScrollReveal
     const sr: ScrollRevealObject = ScrollReveal();
-    
+
     // Define your ScrollReveal animations
     sr.reveal('.hero__img', { origin: 'top' });
 
     if (navToggle) {
-      navToggle.addEventListener("click", () => {
+      navToggle.addEventListener('click', () => {
         if (navMenu) {
-          navMenu.classList.toggle("nav__menu--open");
+          navMenu.classList.toggle('nav__menu--open');
           changeIcon();
         }
       });
 
       navItem.forEach((item) => {
-        item.addEventListener("click", () => {
-          if (navMenu && navMenu.classList.contains("nav__menu--open")) {
-            navMenu.classList.remove("nav__menu--open");
+        item.addEventListener('click', () => {
+          if (navMenu && navMenu.classList.contains('nav__menu--open')) {
+            navMenu.classList.remove('nav__menu--open');
             changeIcon();
           }
         });
@@ -44,7 +45,7 @@ export class MainPageComponent implements OnInit {
 
       function changeIcon() {
         if (navToggle && navMenu) {
-          navToggle.classList.replace("ri-menu-3-line", "ri-close-line");
+          navToggle.classList.replace('ri-menu-3-line', 'ri-close-line');
         } else {
           console.warn("Element with id 'nav-toggle' or 'nav-menu' not found.");
         }
@@ -54,11 +55,11 @@ export class MainPageComponent implements OnInit {
     }
 
     if (header) {
-      window.addEventListener("scroll", () => {
+      window.addEventListener('scroll', () => {
         if (window.scrollY > 40) {
-          header.classList.add("header--scroll");
+          header.classList.add('header--scroll');
         } else {
-          header.classList.remove("header--scroll");
+          header.classList.remove('header--scroll');
         }
       });
     } else {
@@ -67,7 +68,6 @@ export class MainPageComponent implements OnInit {
 
     // Define your ScrollReveal animations
     sr.reveal('.hero__content, .about__content');
-    sr.reveal('.hero__img', { origin: 'top' });
 
     sr.reveal(
       '.hero__info-wrapper, .skills__title, .skills__content, .qualification__name, .qualification__item, .service__card, .project__content, .testimonial__wrapper, .footer__content',
@@ -82,5 +82,32 @@ export class MainPageComponent implements OnInit {
     });
 
     sr.reveal('.qualification__footer .btn, .contact__btn', { origin: 'right' });
-  }
+
+    // Testimonial Slide
+    const testimonialSlide = new Swiper('.testimonial__wrapper', {
+      loop: true,
+      spaceBetween: 30,
+      centeredSlides: true,
+      effect: 'coverflow',
+      grabCursor: true,
+      slidesPerView: 1,
+      coverflowEffect: {
+        rotate: 50,
+        stretch: 0,
+        depth: 100,
+        modifier: 1,
+        slideShadows: true,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      breakpoints: {
+        520: {
+          slidesPerView: 'auto',
+        },
+      },
+    }
+  )
+ }
 }
