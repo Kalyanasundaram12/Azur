@@ -468,6 +468,10 @@ project__link:hover {
   text-align: center;
   justify-self: center;
   margin-bottom: 2rem;
+  display: flex; // Add display: flex to accommodate content
+  flex-direction: column; // Display content in a column
+  align-items: center; // Center content horizontally
+  text-align: center;
 }
 
 .testimonial__img {
@@ -479,7 +483,7 @@ project__link:hover {
 
 .testimonial__description {
   color: $color-white;
-  margin-bottom: 3rem;
+  margin-bottom: 1rem; 
 }
 
 .testimonial__name {
@@ -493,6 +497,10 @@ project__link:hover {
 
 .testimonial__wrapper .swiper-wrapper {
   padding-bottom: 5rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; 
+  justify-content: center;
 }
 
 .testimonial__wrapper .swiper-pagination-bullets {
@@ -509,6 +517,7 @@ project__link:hover {
 .testimonial__wrapper .swiper-pagination-bullet-active {
   background-color: $color-primary;
 }
+
 
 contact__wrapper {
   border-top: 1px solid $color-border;
