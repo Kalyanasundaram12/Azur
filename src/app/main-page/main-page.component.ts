@@ -1,10 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import * as ScrollReveal from 'scrollreveal';
-import Swiper from 'swiper';
-
-interface ScrollRevealObject {
-  reveal: (selector: string, options?: any) => void;
-}
 
 @Component({
   selector: 'app-main-page',
@@ -19,12 +13,6 @@ export class MainPageComponent implements OnInit {
     const navMenu = document.getElementById('nav-menu');
     const navItem = document.querySelectorAll('.nav__item');
     const header = document.getElementById('header');
-
-    // Initialize ScrollReveal
-    const sr: ScrollRevealObject = ScrollReveal();
-
-    // Define your ScrollReveal animations
-    sr.reveal('.hero__img', { origin: 'top' });
 
     if (navToggle) {
       navToggle.addEventListener('click', () => {
@@ -65,49 +53,5 @@ export class MainPageComponent implements OnInit {
     } else {
       console.warn("Element with id 'header' not found.");
     }
-
-    // Define your ScrollReveal animations
-    sr.reveal('.hero__content, .about__content');
-
-    sr.reveal(
-      '.hero__info-wrapper, .skills__title, .skills__content, .qualification__name, .qualification__item, .service__card, .project__content, .testimonial__wrapper, .footer__content',
-      {
-        delay: 500,
-        interval: 100,
-      }
-    );
-
-    sr.reveal('.qualification__footer-text, .contact__content', {
-      origin: 'left',
-    });
-
-    sr.reveal('.qualification__footer .btn, .contact__btn', { origin: 'right' });
-
-    // Testimonial Slide
-    const testimonialSlide = new Swiper('.testimonial__wrapper', {
-      loop: true,
-      spaceBetween: 30,
-      centeredSlides: true,
-      effect: 'coverflow',
-      grabCursor: true,
-      slidesPerView: 1,
-      coverflowEffect: {
-        rotate: 50,
-        stretch: 0,
-        depth: 100,
-        modifier: 1,
-        slideShadows: true,
-      },
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-      breakpoints: {
-        520: {
-          slidesPerView: 'auto',
-        },
-      },
-    }
-  )
- }
+  }
 }
